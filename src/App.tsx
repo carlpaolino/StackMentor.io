@@ -1,6 +1,7 @@
 import React from 'react'
 import { Toaster } from 'react-hot-toast'
 import StackWizard from './components/StackWizard'
+import DebugPanel from './components/DebugPanel'
 import { StackProvider } from './store/StackStore'
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           
           <StackWizard />
         </div>
+        
+        <DebugPanel />
         
         <Toaster 
           position="top-right"

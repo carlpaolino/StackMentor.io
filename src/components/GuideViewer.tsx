@@ -1,5 +1,5 @@
 import React from 'react'
-import { Guide, GuideStep } from '../store/StackStore'
+import { Guide, GuideStep, useStackStore } from '../store/StackStore'
 import { Check, Copy, Play, ChevronDown, ChevronUp } from 'lucide-react'
 import toast from 'react-hot-toast'
 

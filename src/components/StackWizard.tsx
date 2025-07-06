@@ -15,7 +15,9 @@ const StackWizard: React.FC = () => {
       return
     }
 
+    console.log('Generating guide for:', selectedStack)
     await generateGuide()
+    console.log('Guide generated:', currentGuide)
     setCurrentView('guide')
   }
 
@@ -26,7 +28,28 @@ const StackWizard: React.FC = () => {
 
   const isSelectionComplete = selectedStack.frontend && selectedStack.backend && selectedStack.database && selectedStack.deployment
 
-  if (currentView === 'guide' && currentGuide) {
+  if (currentView === 'guide') {
+    if (!currentGuide) {
+      return (
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center mb-6">
+            <button
+              onClick={handleBackToSelection}
+              className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Selection
+            </button>
+          </div>
+          <div className="card text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">Generating Guide...</h2>
+            <p className="text-gray-600">Please wait while we create your personalized setup guide.</p>
+          </div>
+        </div>
+      )
+    }
+    
     return (
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center mb-6">
